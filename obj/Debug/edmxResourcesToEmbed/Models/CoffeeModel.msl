@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Coffee">
+    <EntitySetMapping Name="BRANCHes">
+      <EntityTypeMapping TypeName="Model.BRANCH">
+        <MappingFragment StoreEntitySet="BRANCH">
+          <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+          <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="BRANCH_TEL" ColumnName="BRANCH_TEL" />
+          <ScalarProperty Name="OPEN_TIME" ColumnName="OPEN_TIME" />
+          <ScalarProperty Name="CLOSE_TIME" ColumnName="CLOSE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENTS">
+      <EntityTypeMapping TypeName="Model.DEPARTMENT">
+        <MappingFragment StoreEntitySet="DEPARTMENTS">
+          <ScalarProperty Name="DEP_ID" ColumnName="DEP_ID" />
+          <ScalarProperty Name="DEP_NAME" ColumnName="DEP_NAME" />
+          <ScalarProperty Name="BASE_SALARY" ColumnName="BASE_SALARY" />
+          <ScalarProperty Name="WAGE_PER_HOURS" ColumnName="WAGE_PER_HOURS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEES_COFFEE">
+      <EntityTypeMapping TypeName="Model.EMPLOYEES_COFFEE">
+        <MappingFragment StoreEntitySet="EMPLOYEES_COFFEE">
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="EMP_FIRSTNAME" ColumnName="EMP_FIRSTNAME" />
+          <ScalarProperty Name="EMP_LASTNAME" ColumnName="EMP_LASTNAME" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="HIRE_DATE" ColumnName="HIRE_DATE" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="EMP_USERNAME" ColumnName="EMP_USERNAME" />
+          <ScalarProperty Name="EMP_PASSWORD" ColumnName="EMP_PASSWORD" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQUIPMENTS">
+      <EntityTypeMapping TypeName="Model.EQUIPMENT">
+        <MappingFragment StoreEntitySet="EQUIPMENTS">
+          <ScalarProperty Name="EQUIP_ID" ColumnName="EQUIP_ID" />
+          <ScalarProperty Name="EQUIP_NAME" ColumnName="EQUIP_NAME" />
+          <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+          <ScalarProperty Name="CHECK_DATE" ColumnName="CHECK_DATE" />
+          <ScalarProperty Name="INSURANCE_DATE" ColumnName="INSURANCE_DATE" />
+          <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INVOICEs">
+      <EntityTypeMapping TypeName="Model.INVOICE">
+        <MappingFragment StoreEntitySet="INVOICE">
+          <ScalarProperty Name="INVOICE_ID" ColumnName="INVOICE_ID" />
+          <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+          <ScalarProperty Name="INVOICE_PRICE" ColumnName="INVOICE_PRICE" />
+          <ScalarProperty Name="INVOICE_POINT" ColumnName="INVOICE_POINT" />
+          <ScalarProperty Name="PROMO_ID" ColumnName="PROMO_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ON_INVOICE">
+      <EntityTypeMapping TypeName="Model.ON_INVOICE">
+        <MappingFragment StoreEntitySet="ON_INVOICE">
+          <ScalarProperty Name="INVOICE_ID" ColumnName="INVOICE_ID" />
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTS">
+      <EntityTypeMapping TypeName="Model.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCTS">
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="PRODUCT_PRICE" ColumnName="PRODUCT_PRICE" />
+          <ScalarProperty Name="PRODUCT_POINT" ColumnName="PRODUCT_POINT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROMOTIONS">
+      <EntityTypeMapping TypeName="Model.PROMOTION">
+        <MappingFragment StoreEntitySet="PROMOTIONS">
+          <ScalarProperty Name="PROMO_ID" ColumnName="PROMO_ID" />
+          <ScalarProperty Name="PROMO_NAME" ColumnName="PROMO_NAME" />
+          <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="Model.USER">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="USER_SEX" ColumnName="USER_SEX" />
+          <ScalarProperty Name="USER_TEL" ColumnName="USER_TEL" />
+          <ScalarProperty Name="USER_EMAIL" ColumnName="USER_EMAIL" />
+          <ScalarProperty Name="USER_BD" ColumnName="USER_BD" />
+          <ScalarProperty Name="USER_POINT" ColumnName="USER_POINT" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

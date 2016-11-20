@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @* Template Header Files*@
+    meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--
+
+    Template 2076 Zentro
+
+    http://www.tooplate.com/view/2076-zentro
+
+    -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/2076_zentro/2076_zentro/")css/bootstrap.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/2076_zentro/2076_zentro/")css/animate.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/2076_zentro/2076_zentro/")css/font-awesome.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/2076_zentro/2076_zentro/")css/nivo-lightbox.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/2076_zentro/2076_zentro/")css/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/2076_zentro/2076_zentro/")css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+
+    <!-- JAVASCRIPT JS FILES -->
+    <script src="@Url.Content("~/Content/2076_zentro/2076_zentro/")js/jquery.js"></script>
+    <script src="@Url.Content("~/Content/2076_zentro/2076_zentro/")js/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/Content/2076_zentro/2076_zentro/")js/jquery.parallax.js"></script>
+    <script src="@Url.Content("~/Content/2076_zentro/2076_zentro/")js/smoothscroll.js"></script>
+    <script src="@Url.Content("~/Content/2076_zentro/2076_zentro/")js/nivo-lightbox.min.js"></script>
+    <script src="@Url.Content("~/Content/2076_zentro/2076_zentro/")js/wow.min.js"></script>
+    <script src="@Url.Content("~/Content/2076_zentro/2076_zentro/")js/custom.js"></script>
+</head>
+<body>
+    <!-- preloader section -->
+    <section class="preloader">
+        <div class="sk-spinner sk-spinner-pulse"></div>
+    </section>
+
+    <!-- navigation section -->
+    <section class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">Lamoon Coffee</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home" class="smoothScroll">HOME</a></li>
+                    <li><a href="#gallery" class="smoothScroll">COFFEE GALLERY</a></li>
+                    <li><a href="#Promotions" class="smoothScroll">PROMOTIONS</a></li>
+                    <li><a href="#card" class="smoothScroll">CARD</a></li>
+                    <li><a href="#CONTACT" class="smoothScroll">CONTACT</a></li>
+                    <li><a href="#team" class="smoothScroll">ABOUT US</a></li>
+                    <li><a href="/Content/2076_zentro/2076_zentro/login.html" class="smoothScroll">LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

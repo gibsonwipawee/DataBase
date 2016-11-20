@@ -1,0 +1,106 @@
+﻿@model Database.Model.EMPLOYEES_COFFEE
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>EMPLOYEES_COFFEE</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EMP_FIRSTNAME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EMP_FIRSTNAME)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EMP_LASTNAME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EMP_LASTNAME)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ADDRESS)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ADDRESS)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SALARY)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SALARY)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HIRE_DATE)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HIRE_DATE)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.END_DATE)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.END_DATE)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EMP_USERNAME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EMP_USERNAME)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EMP_PASSWORD)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EMP_PASSWORD)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DEPARTMENT.DEP_NAME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DEPARTMENT.DEP_NAME)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EMP_HISTORY.EMP_START_TIME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EMP_HISTORY.EMP_START_TIME)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EMP_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

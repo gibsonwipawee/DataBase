@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EMPLOYEES_COFFEE">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="varchar2" MaxLength="1" Nullable="false" />
+    <Property Name="EMP_FIRSTNAME" Type="varchar2" MaxLength="30" />
+    <Property Name="EMP_LASTNAME" Type="varchar2" MaxLength="30" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="255" />
+    <Property Name="SALARY" Type="number" Precision="38" Scale="0" />
+    <Property Name="HIRE_DATE" Type="date" />
+    <Property Name="END_DATE" Type="varchar2" MaxLength="1" />
+    <Property Name="EMP_USERNAME" Type="varchar2" MaxLength="30" />
+    <Property Name="EMP_PASSWORD" Type="varchar2" MaxLength="30" />
+    <Property Name="DEPT_ID" Type="varchar2" MaxLength="30" />
+    <Property Name="BRANCH_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="INVOICES">
+    <Key>
+      <PropertyRef Name="INVOICE_ID" />
+    </Key>
+    <Property Name="INVOICE_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="INVOICE_DATE" Type="date" />
+    <Property Name="INVOICE_PRICE" Type="number" Precision="38" Scale="0" />
+    <Property Name="INVOICE_POINT" Type="number" Precision="38" Scale="0" />
+    <Property Name="PROMO_ID" Type="varchar2" MaxLength="1" />
+    <Property Name="EMP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="BRANCH_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="USER_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="varchar2" MaxLength="30" />
+    <Property Name="LAST_NAME" Type="varchar2" MaxLength="30" />
+    <Property Name="USER_SEX" Type="varchar2" MaxLength="30" />
+    <Property Name="USER_TEL" Type="varchar2" MaxLength="30" />
+    <Property Name="USER_EMAIL" Type="varchar2" MaxLength="50" />
+    <Property Name="USER_BD" Type="date" />
+    <Property Name="USER_POINT" Type="varchar2" MaxLength="30" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <Association Name="INVOICES_CON">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="INVOICES">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="EMPLOYEES_COFFEE" EntityType="Self.EMPLOYEES_COFFEE" Schema="COFFEESHOP" store:Type="Tables" />
+    <EntitySet Name="INVOICES" EntityType="Self.INVOICES" Schema="COFFEESHOP" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="COFFEESHOP" store:Type="Tables" />
+    <AssociationSet Name="INVOICES_CON" Association="Self.INVOICES_CON">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="INVOICES" EntitySet="INVOICES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

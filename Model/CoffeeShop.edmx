@@ -1,0 +1,915 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BRANCH">
+          <Key>
+            <PropertyRef Name="BRANCH_ID" />
+          </Key>
+          <Property Name="BRANCH_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="BRANCH_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="LOCATION" Type="varchar2" MaxLength="30" />
+          <Property Name="BRANCH_TEL" Type="varchar2" MaxLength="30" />
+          <Property Name="OPEN_TIME" Type="varchar2" MaxLength="30" />
+          <Property Name="CLOSE_TIME" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LAMOON.CHECK_EQUIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CHECK_EQUIP">
+          <Key>
+            <PropertyRef Name="EQUIP_ID" />
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EQUIP_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="EMP_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPARTMENTS">
+          <Key>
+            <PropertyRef Name="DEP_ID" />
+          </Key>
+          <Property Name="DEP_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="DEP_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="BASE_SALARY" Type="number" Precision="38" Scale="0" />
+          <Property Name="WAGE_PER_HOURS" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LAMOON.EMP_HISTORY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EMP_HISTORY">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="EMP_START_TIME" Type="varchar2" MaxLength="255" />
+          <Property Name="EMP_END_TIME" Type="varchar2" MaxLength="255" />
+          <Property Name="SUM_HOURS" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="EMPLOYEES_COFFEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="EMP_FIRSTNAME" Type="varchar2" MaxLength="30" />
+          <Property Name="EMP_LASTNAME" Type="varchar2" MaxLength="30" />
+          <Property Name="ADDRESS" Type="varchar2" MaxLength="255" />
+          <Property Name="SALARY" Type="number" Precision="38" Scale="0" />
+          <Property Name="HIRE_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="EMP_USERNAME" Type="varchar2" MaxLength="30" />
+          <Property Name="EMP_PASSWORD" Type="varchar2" MaxLength="30" />
+          <Property Name="DEPT_ID" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="EQUIPMENTS">
+          <Key>
+            <PropertyRef Name="EQUIP_ID" />
+          </Key>
+          <Property Name="EQUIP_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="EQUIP_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="START_DATE" Type="date" />
+          <Property Name="CHECK_DATE" Type="date" />
+          <Property Name="INSURANCE_DATE" Type="date" />
+          <Property Name="BRANCH_ID" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="INVOICE_ID" />
+          </Key>
+          <Property Name="INVOICE_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="INVOICE_DATE" Type="date" />
+          <Property Name="INVOICE_PRICE" Type="number" Precision="38" Scale="0" />
+          <Property Name="INVOICE_POINT" Type="number" Precision="38" Scale="0" />
+          <Property Name="PROMO_ID" Type="varchar2" MaxLength="30" />
+          <Property Name="EMP_ID" Type="varchar2" MaxLength="30" />
+          <Property Name="BRANCH_ID" Type="varchar2" MaxLength="30" />
+          <Property Name="USER_ID" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LAMOON.MIX' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MIX">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="RESOURCE_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="RESOURCE_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ON_INVOICE">
+          <Key>
+            <PropertyRef Name="INVOICE_ID" />
+          </Key>
+          <Property Name="INVOICE_ID" Type="varchar2" MaxLength="1" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="varchar2" MaxLength="30" />
+          <Property Name="AMOUNT" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="PRODUCT_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="PRODUCT_PRICE" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRODUCT_POINT" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PROMOTIONS">
+          <Key>
+            <PropertyRef Name="PROMO_ID" />
+          </Key>
+          <Property Name="PROMO_ID" Type="varchar2" MaxLength="1" Nullable="false" />
+          <Property Name="PROMO_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="START_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="DISCOUNT" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="RESOURCES">
+          <Key>
+            <PropertyRef Name="RESOURCE_ID" />
+          </Key>
+          <Property Name="RESOURCE_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="RESOURCE_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="ORDER_DATE" Type="date" />
+          <Property Name="AMOUNT" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LAMOON.STOCK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="STOCK">
+          <Key>
+            <PropertyRef Name="RESOURCE_ID" />
+            <PropertyRef Name="BRANCH_ID" />
+          </Key>
+          <Property Name="RESOURCE_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="BRANCH_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="USER_SEX" Type="varchar2" MaxLength="30" />
+          <Property Name="USER_TEL" Type="varchar2" MaxLength="30" />
+          <Property Name="USER_EMAIL" Type="varchar2" MaxLength="30" />
+          <Property Name="USER_BD" Type="date" />
+          <Property Name="USER_POINT" Type="number" Precision="38" Scale="0" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="30" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <Association Name="CHECK_EQUIP_CON">
+          <End Role="EQUIPMENTS" Type="Self.EQUIPMENTS" Multiplicity="1" />
+          <End Role="CHECK_EQUIP" Type="Self.CHECK_EQUIP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPMENTS">
+              <PropertyRef Name="EQUIP_ID" />
+            </Principal>
+            <Dependent Role="CHECK_EQUIP">
+              <PropertyRef Name="EQUIP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CHECK_EQUIPEMP_CON">
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="1" />
+          <End Role="CHECK_EQUIP" Type="Self.CHECK_EQUIP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES_COFFEE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="CHECK_EQUIP">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_HISTORY_CON">
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="1" />
+          <End Role="EMP_HISTORY" Type="Self.EMP_HISTORY" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES_COFFEE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="EMP_HISTORY">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPLOYEES_COFFEE_CON">
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="0..1" />
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENTS">
+              <PropertyRef Name="DEP_ID" />
+            </Principal>
+            <Dependent Role="EMPLOYEES_COFFEE">
+              <PropertyRef Name="DEPT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EQUIPMENTS_CON">
+          <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="0..1" />
+          <End Role="EQUIPMENTS" Type="Self.EQUIPMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH">
+              <PropertyRef Name="BRANCH_ID" />
+            </Principal>
+            <Dependent Role="EQUIPMENTS">
+              <PropertyRef Name="BRANCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICE_BRANCH_CON">
+          <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH">
+              <PropertyRef Name="BRANCH_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="BRANCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICE_CON">
+          <End Role="PROMOTIONS" Type="Self.PROMOTIONS" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROMOTIONS">
+              <PropertyRef Name="PROMO_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="PROMO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICE_USER_CON">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICEEMP_CON">
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES_COFFEE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MIX_CON">
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
+          <End Role="MIX" Type="Self.MIX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="MIX">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MIX_RESOURCES_CON">
+          <End Role="RESOURCES" Type="Self.RESOURCES" Multiplicity="1" />
+          <End Role="MIX" Type="Self.MIX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESOURCES">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Principal>
+            <Dependent Role="MIX">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ON_INVOICE_CON">
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="0..1" />
+          <End Role="ON_INVOICE" Type="Self.ON_INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ON_INVOICE">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STOCK_BRANCH_CON">
+          <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH">
+              <PropertyRef Name="BRANCH_ID" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="BRANCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STOCK_CON">
+          <End Role="RESOURCES" Type="Self.RESOURCES" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESOURCES">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="BRANCH" EntityType="Self.BRANCH" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEES_COFFEE" EntityType="Self.EMPLOYEES_COFFEE" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="EQUIPMENTS" EntityType="Self.EQUIPMENTS" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="INVOICE" EntityType="Self.INVOICE" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="ON_INVOICE" EntityType="Self.ON_INVOICE" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="PROMOTIONS" EntityType="Self.PROMOTIONS" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="RESOURCES" EntityType="Self.RESOURCES" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="LAMOON" store:Type="Tables" />
+          <EntitySet Name="CHECK_EQUIP" EntityType="Self.CHECK_EQUIP" store:Type="Tables" store:Schema="LAMOON">
+            <DefiningQuery>SELECT 
+"CHECK_EQUIP"."EQUIP_ID" AS "EQUIP_ID", 
+"CHECK_EQUIP"."EMP_ID" AS "EMP_ID"
+FROM "LAMOON"."CHECK_EQUIP" "CHECK_EQUIP"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EMP_HISTORY" EntityType="Self.EMP_HISTORY" store:Type="Tables" store:Schema="LAMOON">
+            <DefiningQuery>SELECT 
+"EMP_HISTORY"."EMP_ID" AS "EMP_ID", 
+"EMP_HISTORY"."EMP_START_TIME" AS "EMP_START_TIME", 
+"EMP_HISTORY"."EMP_END_TIME" AS "EMP_END_TIME", 
+"EMP_HISTORY"."SUM_HOURS" AS "SUM_HOURS"
+FROM "LAMOON"."EMP_HISTORY" "EMP_HISTORY"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MIX" EntityType="Self.MIX" store:Type="Tables" store:Schema="LAMOON">
+            <DefiningQuery>SELECT 
+"MIX"."PRODUCT_ID" AS "PRODUCT_ID", 
+"MIX"."RESOURCE_ID" AS "RESOURCE_ID"
+FROM "LAMOON"."MIX" "MIX"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="STOCK" EntityType="Self.STOCK" store:Type="Tables" store:Schema="LAMOON">
+            <DefiningQuery>SELECT 
+"STOCK"."RESOURCE_ID" AS "RESOURCE_ID", 
+"STOCK"."BRANCH_ID" AS "BRANCH_ID"
+FROM "LAMOON"."STOCK" "STOCK"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="CHECK_EQUIP_CON" Association="Self.CHECK_EQUIP_CON">
+            <End Role="EQUIPMENTS" EntitySet="EQUIPMENTS" />
+            <End Role="CHECK_EQUIP" EntitySet="CHECK_EQUIP" />
+          </AssociationSet>
+          <AssociationSet Name="CHECK_EQUIPEMP_CON" Association="Self.CHECK_EQUIPEMP_CON">
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+            <End Role="CHECK_EQUIP" EntitySet="CHECK_EQUIP" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_HISTORY_CON" Association="Self.EMP_HISTORY_CON">
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+            <End Role="EMP_HISTORY" EntitySet="EMP_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="EMPLOYEES_COFFEE_CON" Association="Self.EMPLOYEES_COFFEE_CON">
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+          </AssociationSet>
+          <AssociationSet Name="EQUIPMENTS_CON" Association="Self.EQUIPMENTS_CON">
+            <End Role="BRANCH" EntitySet="BRANCH" />
+            <End Role="EQUIPMENTS" EntitySet="EQUIPMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICE_BRANCH_CON" Association="Self.INVOICE_BRANCH_CON">
+            <End Role="BRANCH" EntitySet="BRANCH" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICE_CON" Association="Self.INVOICE_CON">
+            <End Role="PROMOTIONS" EntitySet="PROMOTIONS" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICE_USER_CON" Association="Self.INVOICE_USER_CON">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICEEMP_CON" Association="Self.INVOICEEMP_CON">
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="MIX_CON" Association="Self.MIX_CON">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="MIX" EntitySet="MIX" />
+          </AssociationSet>
+          <AssociationSet Name="MIX_RESOURCES_CON" Association="Self.MIX_RESOURCES_CON">
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+            <End Role="MIX" EntitySet="MIX" />
+          </AssociationSet>
+          <AssociationSet Name="ON_INVOICE_CON" Association="Self.ON_INVOICE_CON">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="ON_INVOICE" EntitySet="ON_INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="STOCK_BRANCH_CON" Association="Self.STOCK_BRANCH_CON">
+            <End Role="BRANCH" EntitySet="BRANCH" />
+            <End Role="STOCK" EntitySet="STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="STOCK_CON" Association="Self.STOCK_CON">
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+            <End Role="STOCK" EntitySet="STOCK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BRANCH">
+          <Key>
+            <PropertyRef Name="BRANCH_ID" />
+          </Key>
+          <Property Name="BRANCH_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BRANCH_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BRANCH_TEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="OPEN_TIME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CLOSE_TIME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EQUIPMENTS" Relationship="Self.EQUIPMENTS_CON" FromRole="BRANCH" ToRole="EQUIPMENTS" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.INVOICE_BRANCH_CON" FromRole="BRANCH" ToRole="INVOICE" />
+          <NavigationProperty Name="RESOURCES" Relationship="Self.STOCK" FromRole="BRANCH" ToRole="RESOURCES" />
+        </EntityType>
+        <EntityType Name="DEPARTMENT">
+          <Key>
+            <PropertyRef Name="DEP_ID" />
+          </Key>
+          <Property Name="DEP_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DEP_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BASE_SALARY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="WAGE_PER_HOURS" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="EMPLOYEES_COFFEE" Relationship="Self.EMPLOYEES_COFFEE_CON" FromRole="DEPARTMENTS" ToRole="EMPLOYEES_COFFEE" />
+        </EntityType>
+        <EntityType Name="EMPLOYEES_COFFEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMP_FIRSTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_LASTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SALARY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="HIRE_DATE" Type="DateTime" />
+          <Property Name="END_DATE" Type="DateTime" />
+          <Property Name="EMP_USERNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DEPARTMENT" Relationship="Self.EMPLOYEES_COFFEE_CON" FromRole="EMPLOYEES_COFFEE" ToRole="DEPARTMENTS" />
+          <NavigationProperty Name="EMP_HISTORY" Relationship="Self.EMP_HISTORY_CON" FromRole="EMPLOYEES_COFFEE" ToRole="EMP_HISTORY" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.INVOICEEMP_CON" FromRole="EMPLOYEES_COFFEE" ToRole="INVOICE" />
+          <NavigationProperty Name="EQUIPMENTS" Relationship="Self.CHECK_EQUIP" FromRole="EMPLOYEES_COFFEE" ToRole="EQUIPMENTS" />
+        </EntityType>
+        <EntityType Name="EQUIPMENT">
+          <Key>
+            <PropertyRef Name="EQUIP_ID" />
+          </Key>
+          <Property Name="EQUIP_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EQUIP_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="START_DATE" Type="DateTime" />
+          <Property Name="CHECK_DATE" Type="DateTime" />
+          <Property Name="INSURANCE_DATE" Type="DateTime" />
+          <Property Name="BRANCH_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BRANCH" Relationship="Self.EQUIPMENTS_CON" FromRole="EQUIPMENTS" ToRole="BRANCH" />
+          <NavigationProperty Name="EMPLOYEES_COFFEE" Relationship="Self.CHECK_EQUIP" FromRole="EQUIPMENTS" ToRole="EMPLOYEES_COFFEE" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="INVOICE_ID" />
+          </Key>
+          <Property Name="INVOICE_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" />
+          <Property Name="INVOICE_PRICE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="INVOICE_POINT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PROMO_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BRANCH_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BRANCH" Relationship="Self.INVOICE_BRANCH_CON" FromRole="INVOICE" ToRole="BRANCH" />
+          <NavigationProperty Name="EMPLOYEES_COFFEE" Relationship="Self.INVOICEEMP_CON" FromRole="INVOICE" ToRole="EMPLOYEES_COFFEE" />
+          <NavigationProperty Name="PROMOTION" Relationship="Self.INVOICE_CON" FromRole="INVOICE" ToRole="PROMOTIONS" />
+          <NavigationProperty Name="USER" Relationship="Self.INVOICE_USER_CON" FromRole="INVOICE" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="ON_INVOICE">
+          <Key>
+            <PropertyRef Name="INVOICE_ID" />
+          </Key>
+          <Property Name="INVOICE_ID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.ON_INVOICE_CON" FromRole="ON_INVOICE" ToRole="PRODUCTS" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_PRICE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRODUCT_POINT" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="ON_INVOICE" Relationship="Self.ON_INVOICE_CON" FromRole="PRODUCTS" ToRole="ON_INVOICE" />
+          <NavigationProperty Name="RESOURCES" Relationship="Self.MIX" FromRole="PRODUCTS" ToRole="RESOURCES" />
+        </EntityType>
+        <EntityType Name="PROMOTION">
+          <Key>
+            <PropertyRef Name="PROMO_ID" />
+          </Key>
+          <Property Name="PROMO_ID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROMO_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="START_DATE" Type="DateTime" />
+          <Property Name="END_DATE" Type="DateTime" />
+          <Property Name="DISCOUNT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.INVOICE_CON" FromRole="PROMOTIONS" ToRole="INVOICE" />
+        </EntityType>
+        <EntityType Name="RESOURCE">
+          <Key>
+            <PropertyRef Name="RESOURCE_ID" />
+          </Key>
+          <Property Name="RESOURCE_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RESOURCE_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_DATE" Type="DateTime" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="PRODUCTS" Relationship="Self.MIX" FromRole="RESOURCES" ToRole="PRODUCTS" />
+          <NavigationProperty Name="BRANCHes" Relationship="Self.STOCK" FromRole="RESOURCES" ToRole="BRANCH" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="USER_SEX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="USER_TEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="USER_EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="USER_BD" Type="DateTime" />
+          <Property Name="USER_POINT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="USERNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.INVOICE_USER_CON" FromRole="USERS" ToRole="INVOICE" />
+        </EntityType>
+        <EntityType Name="EMP_HISTORY">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMP_START_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_END_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SUM_HOURS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEES_COFFEE" Relationship="Self.EMP_HISTORY_CON" FromRole="EMP_HISTORY" ToRole="EMPLOYEES_COFFEE" />
+        </EntityType>
+        <Association Name="EQUIPMENTS_CON">
+          <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="0..1" />
+          <End Role="EQUIPMENTS" Type="Self.EQUIPMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH">
+              <PropertyRef Name="BRANCH_ID" />
+            </Principal>
+            <Dependent Role="EQUIPMENTS">
+              <PropertyRef Name="BRANCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICE_BRANCH_CON">
+          <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH">
+              <PropertyRef Name="BRANCH_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="BRANCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPLOYEES_COFFEE_CON">
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENTS">
+              <PropertyRef Name="DEP_ID" />
+            </Principal>
+            <Dependent Role="EMPLOYEES_COFFEE">
+              <PropertyRef Name="DEPT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_HISTORY_CON">
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="1" />
+          <End Role="EMP_HISTORY" Type="Self.EMP_HISTORY" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES_COFFEE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="EMP_HISTORY">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICEEMP_CON">
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES_COFFEE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICE_CON">
+          <End Role="PROMOTIONS" Type="Self.PROMOTION" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROMOTIONS">
+              <PropertyRef Name="PROMO_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="PROMO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICE_USER_CON">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ON_INVOICE_CON">
+          <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="ON_INVOICE" Type="Self.ON_INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ON_INVOICE">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CHECK_EQUIP">
+          <End Role="EQUIPMENTS" Type="Self.EQUIPMENT" Multiplicity="*" />
+          <End Role="EMPLOYEES_COFFEE" Type="Self.EMPLOYEES_COFFEE" Multiplicity="*" />
+        </Association>
+        <Association Name="MIX">
+          <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="*" />
+          <End Role="RESOURCES" Type="Self.RESOURCE" Multiplicity="*" />
+        </Association>
+        <Association Name="STOCK">
+          <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="*" />
+          <End Role="RESOURCES" Type="Self.RESOURCE" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BRANCHes" EntityType="Self.BRANCH" />
+          <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENT" />
+          <EntitySet Name="EMPLOYEES_COFFEE" EntityType="Self.EMPLOYEES_COFFEE" />
+          <EntitySet Name="EQUIPMENTS" EntityType="Self.EQUIPMENT" />
+          <EntitySet Name="INVOICEs" EntityType="Self.INVOICE" />
+          <EntitySet Name="ON_INVOICE" EntityType="Self.ON_INVOICE" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCT" />
+          <EntitySet Name="PROMOTIONS" EntityType="Self.PROMOTION" />
+          <EntitySet Name="RESOURCES" EntityType="Self.RESOURCE" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="EMP_HISTORY" EntityType="Self.EMP_HISTORY" />
+          <AssociationSet Name="EQUIPMENTS_CON" Association="Self.EQUIPMENTS_CON">
+            <End Role="BRANCH" EntitySet="BRANCHes" />
+            <End Role="EQUIPMENTS" EntitySet="EQUIPMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICE_BRANCH_CON" Association="Self.INVOICE_BRANCH_CON">
+            <End Role="BRANCH" EntitySet="BRANCHes" />
+            <End Role="INVOICE" EntitySet="INVOICEs" />
+          </AssociationSet>
+          <AssociationSet Name="EMPLOYEES_COFFEE_CON" Association="Self.EMPLOYEES_COFFEE_CON">
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_HISTORY_CON" Association="Self.EMP_HISTORY_CON">
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+            <End Role="EMP_HISTORY" EntitySet="EMP_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICEEMP_CON" Association="Self.INVOICEEMP_CON">
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+            <End Role="INVOICE" EntitySet="INVOICEs" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICE_CON" Association="Self.INVOICE_CON">
+            <End Role="PROMOTIONS" EntitySet="PROMOTIONS" />
+            <End Role="INVOICE" EntitySet="INVOICEs" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICE_USER_CON" Association="Self.INVOICE_USER_CON">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="INVOICE" EntitySet="INVOICEs" />
+          </AssociationSet>
+          <AssociationSet Name="ON_INVOICE_CON" Association="Self.ON_INVOICE_CON">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="ON_INVOICE" EntitySet="ON_INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="CHECK_EQUIP" Association="Self.CHECK_EQUIP">
+            <End Role="EQUIPMENTS" EntitySet="EQUIPMENTS" />
+            <End Role="EMPLOYEES_COFFEE" EntitySet="EMPLOYEES_COFFEE" />
+          </AssociationSet>
+          <AssociationSet Name="MIX" Association="Self.MIX">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="STOCK" Association="Self.STOCK">
+            <End Role="BRANCH" EntitySet="BRANCHes" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
+          <EntitySetMapping Name="BRANCHes">
+            <EntityTypeMapping TypeName="Model.BRANCH">
+              <MappingFragment StoreEntitySet="BRANCH">
+                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+                <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="BRANCH_TEL" ColumnName="BRANCH_TEL" />
+                <ScalarProperty Name="OPEN_TIME" ColumnName="OPEN_TIME" />
+                <ScalarProperty Name="CLOSE_TIME" ColumnName="CLOSE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPARTMENTS">
+            <EntityTypeMapping TypeName="Model.DEPARTMENT">
+              <MappingFragment StoreEntitySet="DEPARTMENTS">
+                <ScalarProperty Name="DEP_ID" ColumnName="DEP_ID" />
+                <ScalarProperty Name="DEP_NAME" ColumnName="DEP_NAME" />
+                <ScalarProperty Name="BASE_SALARY" ColumnName="BASE_SALARY" />
+                <ScalarProperty Name="WAGE_PER_HOURS" ColumnName="WAGE_PER_HOURS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEES_COFFEE">
+            <EntityTypeMapping TypeName="Model.EMPLOYEES_COFFEE">
+              <MappingFragment StoreEntitySet="EMPLOYEES_COFFEE">
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="EMP_FIRSTNAME" ColumnName="EMP_FIRSTNAME" />
+                <ScalarProperty Name="EMP_LASTNAME" ColumnName="EMP_LASTNAME" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="HIRE_DATE" ColumnName="HIRE_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="EMP_USERNAME" ColumnName="EMP_USERNAME" />
+                <ScalarProperty Name="EMP_PASSWORD" ColumnName="EMP_PASSWORD" />
+                <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQUIPMENTS">
+            <EntityTypeMapping TypeName="Model.EQUIPMENT">
+              <MappingFragment StoreEntitySet="EQUIPMENTS">
+                <ScalarProperty Name="EQUIP_ID" ColumnName="EQUIP_ID" />
+                <ScalarProperty Name="EQUIP_NAME" ColumnName="EQUIP_NAME" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="CHECK_DATE" ColumnName="CHECK_DATE" />
+                <ScalarProperty Name="INSURANCE_DATE" ColumnName="INSURANCE_DATE" />
+                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVOICEs">
+            <EntityTypeMapping TypeName="Model.INVOICE">
+              <MappingFragment StoreEntitySet="INVOICE">
+                <ScalarProperty Name="INVOICE_ID" ColumnName="INVOICE_ID" />
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="INVOICE_PRICE" ColumnName="INVOICE_PRICE" />
+                <ScalarProperty Name="INVOICE_POINT" ColumnName="INVOICE_POINT" />
+                <ScalarProperty Name="PROMO_ID" ColumnName="PROMO_ID" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ON_INVOICE">
+            <EntityTypeMapping TypeName="Model.ON_INVOICE">
+              <MappingFragment StoreEntitySet="ON_INVOICE">
+                <ScalarProperty Name="INVOICE_ID" ColumnName="INVOICE_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTS">
+            <EntityTypeMapping TypeName="Model.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCTS">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="PRODUCT_PRICE" ColumnName="PRODUCT_PRICE" />
+                <ScalarProperty Name="PRODUCT_POINT" ColumnName="PRODUCT_POINT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROMOTIONS">
+            <EntityTypeMapping TypeName="Model.PROMOTION">
+              <MappingFragment StoreEntitySet="PROMOTIONS">
+                <ScalarProperty Name="PROMO_ID" ColumnName="PROMO_ID" />
+                <ScalarProperty Name="PROMO_NAME" ColumnName="PROMO_NAME" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESOURCES">
+            <EntityTypeMapping TypeName="Model.RESOURCE">
+              <MappingFragment StoreEntitySet="RESOURCES">
+                <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
+                <ScalarProperty Name="RESOURCE_NAME" ColumnName="RESOURCE_NAME" />
+                <ScalarProperty Name="ORDER_DATE" ColumnName="ORDER_DATE" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="Model.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="USER_SEX" ColumnName="USER_SEX" />
+                <ScalarProperty Name="USER_TEL" ColumnName="USER_TEL" />
+                <ScalarProperty Name="USER_EMAIL" ColumnName="USER_EMAIL" />
+                <ScalarProperty Name="USER_BD" ColumnName="USER_BD" />
+                <ScalarProperty Name="USER_POINT" ColumnName="USER_POINT" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP_HISTORY">
+            <EntityTypeMapping TypeName="Model.EMP_HISTORY">
+              <MappingFragment StoreEntitySet="EMP_HISTORY">
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="EMP_START_TIME" ColumnName="EMP_START_TIME" />
+                <ScalarProperty Name="EMP_END_TIME" ColumnName="EMP_END_TIME" />
+                <ScalarProperty Name="SUM_HOURS" ColumnName="SUM_HOURS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CHECK_EQUIP" TypeName="Model.CHECK_EQUIP" StoreEntitySet="CHECK_EQUIP">
+            <EndProperty Name="EQUIPMENTS">
+              <ScalarProperty Name="EQUIP_ID" ColumnName="EQUIP_ID" />
+            </EndProperty>
+            <EndProperty Name="EMPLOYEES_COFFEE">
+              <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MIX" TypeName="Model.MIX" StoreEntitySet="MIX">
+            <EndProperty Name="PRODUCTS">
+              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+            </EndProperty>
+            <EndProperty Name="RESOURCES">
+              <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="STOCK" TypeName="Model.STOCK" StoreEntitySet="STOCK">
+            <EndProperty Name="BRANCH">
+              <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+            </EndProperty>
+            <EndProperty Name="RESOURCES">
+              <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

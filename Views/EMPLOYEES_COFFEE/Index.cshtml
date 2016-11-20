@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Database.Model.EMPLOYEES_COFFEE>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EMP_FIRSTNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMP_LASTNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SALARY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HIRE_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.END_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMP_USERNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMP_PASSWORD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DEPARTMENT.DEP_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMP_HISTORY.EMP_START_TIME)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMP_FIRSTNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMP_LASTNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SALARY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HIRE_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.END_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMP_USERNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMP_PASSWORD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DEPARTMENT.DEP_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMP_HISTORY.EMP_START_TIME)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.EMP_ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.EMP_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.EMP_ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

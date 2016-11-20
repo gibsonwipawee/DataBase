@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EMPLOYEES_COFFEE">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMP_FIRSTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_LASTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SALARY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HIRE_DATE" Type="DateTime" />
+    <Property Name="END_DATE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_USERNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DEPT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="BRANCH_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="INVOICES">
+    <Key>
+      <PropertyRef Name="INVOICE_ID" />
+    </Key>
+    <Property Name="INVOICE_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="INVOICE_DATE" Type="DateTime" />
+    <Property Name="INVOICE_PRICE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="INVOICE_POINT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="PROMO_ID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="BRANCH_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="USER_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USERS" Relationship="Self.INVOICES_CON" FromRole="INVOICES" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="USER_SEX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="USER_TEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="USER_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USER_BD" Type="DateTime" />
+    <Property Name="USER_POINT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="INVOICES" Relationship="Self.INVOICES_CON" FromRole="USERS" ToRole="INVOICES" />
+  </EntityType>
+  <Association Name="INVOICES_CON">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="INVOICES">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EMPLOYEES_COFFEE" EntityType="Self.EMPLOYEES_COFFEE" />
+    <EntitySet Name="INVOICES" EntityType="Self.INVOICES" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" />
+    <AssociationSet Name="INVOICES_CON" Association="Self.INVOICES_CON">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="INVOICES" EntitySet="INVOICES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

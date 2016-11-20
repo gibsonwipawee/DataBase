@@ -1,0 +1,56 @@
+﻿@model Database.Model.PRODUCT
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>PRODUCT</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PRODUCT_ID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PRODUCT_ID)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PRODUCT_NAME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PRODUCT_NAME)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PRODUCT_PRICE)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PRODUCT_PRICE)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PRODUCT_POINT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PRODUCT_POINT)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PRODUCT_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

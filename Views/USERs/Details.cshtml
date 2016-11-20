@@ -1,0 +1,91 @@
+﻿@model Database.Model.USER
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>USER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FIRST_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIRST_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAST_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAST_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_SEX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_SEX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_TEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_TEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_BD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_BD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_POINT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_POINT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USERNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USERNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PASSWORD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.USER_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
