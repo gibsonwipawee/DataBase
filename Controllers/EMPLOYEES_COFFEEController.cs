@@ -30,8 +30,8 @@ namespace Database.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(EMPLOYEES_COFFEE objUser)
         {
-            if (ModelState.IsValid)
-            {
+            
+            
                 using (Entities1 db = new Entities1())
                 {
                     var obj = db.EMPLOYEES_COFFEE.Where(a => a.EMP_USERNAME.Equals(objUser.EMP_USERNAME) && a.EMP_PASSWORD.Equals(objUser.EMP_PASSWORD)).FirstOrDefault();
@@ -39,15 +39,19 @@ namespace Database.Controllers
                     {
                         Session["UserID"] = obj.EMP_ID.ToString();
                         Session["UserName"] = obj.EMP_USERNAME.ToString();
-                        
-                    }
+
+                    return RedirectToAction("Dash");
                 }
+                ModelState.AddModelError("", "Username or Password is wrong!");
             }
             return View(objUser);
         }
-
-      
-
+    
+        
+        public ActionResult Dash()
+        {
+            return View();
+        }      
         // GET: EMPLOYEES_COFFEE/Details/5
         public async Task<ActionResult> Details(string id)
         {

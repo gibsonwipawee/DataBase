@@ -386,6 +386,7 @@
     <Content Include="Views\USERs\Login.cshtml" />
     <Content Include="Views\USERs\Dash.cshtml" />
     <Content Include="Views\EMPLOYEES_COFFEE\Login.cshtml" />
+    <Content Include="Views\EMPLOYEES_COFFEE\Dash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

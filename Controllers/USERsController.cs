@@ -28,21 +28,25 @@ namespace Database.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(USER objUser)
         {
-            if (ModelState.IsValid)
+
+
+            using (Entities1 db = new Entities1())
             {
-                using (Entities1 db = new Entities1())
+                var obj = db.USERS.Where(a => a.USERNAME.Equals(objUser.USERNAME) && a.PASSWORD.Equals(objUser.PASSWORD)).FirstOrDefault();
+                if (obj != null)
                 {
-                    var obj = db.USERS.Where(a => a.USERNAME.Equals(objUser.USERNAME) && a.PASSWORD.Equals(objUser.PASSWORD)).FirstOrDefault();
-                    if (obj != null)
-                    {
-                        Session["UserID"] = obj.USER_ID.ToString();
-                        Session["UserName"] = obj.USERNAME.ToString();
-                        return RedirectToAction("Dash");
-                    }
+                    Session["UserID"] = obj.USER_ID.ToString();
+                    Session["UserName"] = obj.USERNAME.ToString();
+                    return RedirectToAction("Dash");
                 }
+                ModelState.AddModelError("", "Username or Password is wrong!");
             }
             return View(objUser);
         }
+         
+                
+            
+        
         public ActionResult Dash()
         {
             return View();
